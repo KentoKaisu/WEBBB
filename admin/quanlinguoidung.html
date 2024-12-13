@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý người dùng</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="asset/css/nguyenlieu.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #198754;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      color: #ffffff;
+    }
+    .sidebar a {
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .sidebar a:hover {
+      background-color: #4b69b4;
+    }
+    .sidebar .active {
+      background-color: #007bff;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .status-active {
+      background-color: rgb(215, 248, 215);
+      padding: 5px;
+      border-radius: 5px;
+      color: green;
+      text-align: center;
+    }
+    .status-unactive {
+      background-color: rgb(254, 228, 228);
+      padding: 5px;
+      border-radius: 5px;
+      color: red;
+      text-align: center;
+    }
+    .modal-header {
+      background-color: #198754;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Tea House</h2>
+    <a href="bangdieukhien.html"><i class="fas fa-home"></i> Bảng điều khiển</a>
+    <a href="quanlidonhang.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a>
+    <a href="quanlinguyenlieu.html"><i class="fas fa-book"></i> Quản lý nguyên liệu</a>
+    <a href="quanlinguoidung.html" class="active"><i class="fa-solid fa-user"></i> Quản lý người dùng</a>
+    <a href="quanlisanpham.html"><i class="fa-solid fa-list"></i>Quản lí sản phẩm</a>
+
+    <a href="thongkesanpham.html"><i class="fa-solid fa-shop"></i> Thống kê sản phẩm</a>
+    <a href="quanlikhachhang.html"><i class="fa-solid fa-users"></i> Thống kê khách hàng</a>
+  </div>
+
+  <div class="content">
+    <h1>Quản lý người dùng</h1>
+    <button class="btn btn-success mb-3"style="right:0" onclick="openAddUserModal()">Thêm người dùng</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Số thứ tự</th>
+          <th>Tên người dùng</th>
+          <th>Chức vụ</th>
+          <th>Gmail</th>
+          <th>Số điện thoại</th>
+          <th>Trạng thái</th>
+          <th>Khóa</th>
+          <th>Sửa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>thanhprovjp</td>
+          <td>Quản trị viên</td>
+          <td>muehehe@gmail.com</td>
+          <td>0123456789</td>
+          <td><div class="status-active">Active</div></td>
+          <td><button class="btn btn-danger" onclick="confirmLock('thanhprovjp')">Khóa</button></td>
+          <td><button class="btn btn-warning" onclick="openEditModal(1, 'thanhprovjp', 'muehehe@example.com', '0123456789', 'Admin')">Sửa</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>hunghehe</td>
+          <td>Quản lí</td>
+          <td>owo@gmail.com</td>
+          <td>0987654321</td>
+          <td><div class="status-unactive">Unactive</div></td>
+          <td><button class="btn btn-danger" onclick="confirmLock('hunghehe')">Khóa</button></td>
+          <td><button class="btn btn-warning" onclick="openEditModal(2, 'hunghehe', 'owo@gmail.com', '0987654321', 'Quản lí')">Sửa</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>TaylorSwift</td>
+            <td>Thư kí</td>
+            <td>Thuyloan@gmail.com</td>
+            <td>0123456789</td>
+            <td><div class="status-active">Active</div></td>
+            <td><button class="btn btn-danger" onclick="confirmLock('TaylorSwift')">Khóa</button></td>
+            <td><button class="btn btn-warning" onclick="openEditModal(3, 'TaylorSwift', 'Thuyloan@example.com', '0123456789', 'Thư kí')">Sửa</button></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Beyonce</td>
+            <td>Quản lí</td>
+            <td>CamonBeyonce@gmail.com</td>
+            <td>0987654321</td>
+            <td><div class="status-unactive">Unactive</div></td>
+            <td><button class="btn btn-danger" onclick="confirmLock('Beyonce')">Khóa</button></td>
+            <td><button class="btn btn-warning" onclick="openEditModal(2, 'Beyonce', 'CamonBeyonce@gmail.com', '0987654321', 'Quản lí')">Sửa</button></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>datdidau</td>
+            <td>Người mua hàng</td>
+            <td>phuclong@gmail.com</td>
+            <td>0123456789</td>
+            <td><div class="status-active">Active</div></td>
+            <td><button class="btn btn-danger" onclick="confirmLock('datdidau')">Khóa</button></td>
+            <td><button class="btn btn-warning" onclick="openEditModal(5, 'datdidau', 'phuclong@example.com', '0123456789', 'Người mua hàng')">Sửa</button></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>hiuhuhu</td>
+            <td>Người mua hàng</td>
+            <td>hiuhiu@gmail.com</td>
+            <td>0987654321</td>
+            <td><div class="status-unactive">Unactive</div></td>
+            <td><button class="btn btn-danger" onclick="confirmLock('hiuhuhu')">Khóa</button></td>
+            <td><button class="btn btn-warning" onclick="openEditModal(6, 'hiuhuhu', 'hiuhiu@gmail.com', '0987654321', 'Người mua hàng')">Sửa</button></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal sửa người dùng -->
+  <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editUserModalLabel">Chỉnh sửa người dùng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editUserForm">
+            <div class="mb-3">
+              <label for="userImage" class="form-label">Ảnh</label>
+              <input type="file" class="form-control" id="userImage">
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Tên người dùng</label>
+              <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Gmail</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Số điện thoại</label>
+              <input type="tel" class="form-control" id="phone" required>
+            </div>
+            <div class="mb-3">
+              <label for="role" class="form-label">Chức vụ</label>
+              <select class="form-select" id="role" required>
+                <option value="Admin">Admin</option>
+                <option value="Thư kí">Thư kí</option>
+                <option value="Nhân viên">Nhân viên</option>
+                <option value="Quản lí">Quản lí</option>
+                <option value="Người mua hàng">Người mua hàng</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal thêm người dùng -->
+  <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addUserModalLabel">Thêm người dùng mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addUserForm">
+            <div class="mb-3">
+              <label for="newUserImage" class="form-label">Ảnh</label>
+              <input type="file" class="form-control" id="newUserImage">
+            </div>
+            <div class="mb-3">
+              <label for="newUsername" class="form-label">Tên người dùng</label>
+              <input type="text" class="form-control" id="newUsername" required>
+            </div>
+            <div class="mb-3">
+              <label for="newEmail" class="form-label">Gmail</label>
+              <input type="email" class="form-control" id="newEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="newPhone" class="form-label">Số điện thoại</label>
+              <input type="tel" class="form-control" id="newPhone" required>
+            </div>
+            <div class="mb-3">
+              <label for="newRole" class="form-label">Chức vụ</label>
+              <select class="form-select" id="newRole" required>
+                <option value="Admin">Admin</option>
+                <option value="Thư kí">Thư kí</option>
+                <option value="Nhân viên">Nhân viên</option>
+                <option value="Quản lí">Quản lí</option>
+                <option value="Người mua hàng">Người mua hàng</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm người dùng</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmLock(username) {
+      const confirmation = confirm(`Bạn có muốn khóa người dùng ${username} không?`);
+      if (confirmation) {
+        alert(`${username} đã bị khóa.`);
+      }
+    }
+
+    function openEditModal(id, username, email, phone, role) {
+      document.getElementById('username').value = username;
+      document.getElementById('email').value = email;
+      document.getElementById('phone').value = phone;
+      document.getElementById('role').value = role;
+
+      const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
+      modal.show();
+    }
+
+    function openAddUserModal() {
+      const modal = new bootstrap.Modal(document.getElementById('addUserModal'));
+      modal.show();
+    }
+
+    document.getElementById('editUserForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Thông tin người dùng đã được cập nhật.');
+      const modal = bootstrap.Modal.getInstance(document.getElementById('editUserModal'));
+      modal.hide();
+    });
+
+    document.getElementById('addUserForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert('Chào mừng đến với gia đình Teashop của chúng tôi!');
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addUserModal'));
+      modal.hide();
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

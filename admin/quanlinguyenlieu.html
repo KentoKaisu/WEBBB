@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý sản phẩm</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="asset/css/nguyenlieu.css" rel="stylesheet" >
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Tea House</h2>
+    <a href="bangdieukhien.html"><i class="fas fa-home"></i> Bảng điều khiển</a>
+    <a href="quanlidonhang.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a>
+    <a href="quanlinguyenlieu.html" class="active"><i class="fas fa-book"></i> Quản lý nguyên liệu</a>
+    <a href="quanlinguoidung.html"><i class="fa-solid fa-user"></i>Quản lí người dùng</a>
+    <a href="quanlisanpham.html"><i class="fa-solid fa-list"></i>Quản lí sản phẩm</a>
+
+    <a href="thongkesanpham.html"><i class="fa-solid fa-shop"></i>Thống kê sản phẩm</a>
+    <a href="quanlikhachhang.html"><i class="fa-solid fa-users"></i> Thống kê khách hàng</a>
+
+
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+  <h2>Quản lý nguyên liệu</h2>
+    <div class="search">
+      <input type="text" placeholder="Tìm kiếm theo mã nguyên liệu">
+      <button><i class="fas fa-search"></i> Tìm kiếm</button>
+    </div>
+
+    <div class="filters-container">
+      <div class="filters">
+        <div class="filters-row">
+          <div class="filter-group">
+            <label class="filter-label"></label>
+            <div class="date-range">
+              <div>
+                <label>From:</label>
+                <input type="date" id="start-date" name="start-date" />
+              </div>
+              <div class="date-to">
+                <label>To:</label>
+                <input type="date" id="end-date" name="end-date" />
+              </div>
+            </div>
+        </div>
+      
+        <button class="btn_ass">Search</button>
+          </div>
+        </div>
+      </div>
+  <!-- Order Table -->
+  <h3 class="mt-4"> Danh sách nguyên liệu </h3>      
+    <table class="table table-striped">
+      <thead>
+        <tr>
+         <th>STT</th>
+         <th>Mã nguyên liệu</th>
+         <th>Tên nguyên liệu</th>
+         <th>Đơn vị</th>
+         <th>Đơn giá</th>
+         <th>Tồn kho</th>
+         <th>Ngày cập nhật</th>
+         <th>Thao tác</th>
+        </tr> 
+     </thead>
+    <tbody>
+        <tr>
+          <td>1</td>
+          <td>TR01</td>         
+          <td>Gói trà pha sẵn</td>
+          <td>Gói</td>
+          <td>8.000</td>
+          <td>35</td>
+          <td>7/12/2024 9:00</td>
+          <td>
+            <!-- Nút sửa -->
+            <a href="suanguyenlieu.html">
+              <button class="edit-btn">Sửa</button>
+            </a>
+            <!-- Nút xóa -->
+            <a href="xoanguyenlieu.html">
+              <button class="delete-btn">Xóa</button>
+            </a>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>DA02</td>
+          <td>Đào đóng lon</td>
+          <td>Lon</td>
+          <td>30.000</td>
+          <td>18</td>
+          <td>7/12/2024 9:00</td>
+          <td>
+            <!-- Nút sửa -->
+            <a href="suanguyenlieu.html">
+              <button class="edit-btn">Sửa</button>
+            </a>
+            <!-- Nút xóa -->
+            <a href="xoanguyenlieu.html">
+              <button class="delete-btn">Xóa</button>
+            </a>
+          </td>
+          
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>SU03</td>
+            <td>Sữa đặc</td>
+            <td>Lon</td>
+            <td>15.000</td>
+            <td>5</td>
+            <td>7/12/2024 9:00</td>
+            <td>
+              <!-- Nút sửa -->
+              <a href="suanguyenlieu.html">
+                <button class="edit-btn">Sửa</button>
+              </a>
+              <!-- Nút xóa -->
+              <a href="xoanguyenlieu.html">
+                <button class="delete-btn">Xóa</button>
+              </a>
+            </td>
+            
+         </tr>
+        <tr>
+            <td>4</td>
+            <td>VA04</td>
+            <td>Vải đóng lon</td>
+            <td>Lon</td>
+            <td>30.000</td>
+            <td>12</td>
+            <td>7/12/2024 9:00</td>
+            <td>
+              <!-- Nút sửa -->
+              <a href="suanguyenlieu.html">
+                <button class="edit-btn">Sửa</button>
+              </a>
+              <!-- Nút xóa -->
+              <a href="xoanguyenlieu.html">
+                <button class="delete-btn">Xóa</button>
+              </a>
+            </td>
+            
+          </tr>
+        <tr>
+            <td>5</td>
+            <td>SI02</td>
+            <td>Si rô việt quốc</td>
+            <td>Chai</td>
+            <td>45.000</td>
+            <td>3</td>
+            <td>7/12/2024 9:00</td>
+            <td>
+              <!-- Nút sửa -->
+              <a href="suanguyenlieu.html">
+                <button class="edit-btn">Sửa</button>
+              </a>
+              <!-- Nút xóa -->
+              <a href="xoanguyenlieu.html">
+                <button class="delete-btn">Xóa</button>
+              </a>
+            </td>
+            
+          </tr>
+        <tr>
+            <td>6</td>
+            <td>BO06</td>
+            <td>Bột mì</td>
+            <td>Kilogram</td>
+            <td>23.000</td>
+            <td>7</td>
+            <td>7/12/2024 9:00</td>
+            <td>
+              <!-- Nút sửa -->
+              <a href="suanguyenlieu.html">
+                <button class="edit-btn">Sửa</button>
+              </a>
+              <!-- Nút xóa -->
+              <a href="xoanguyenlieu.html">
+                <button class="delete-btn">Xóa</button>
+              </a>
+            </td>
+            
+          </tr>
+        <tr>
+            <td>7</td>
+            <td>MU07</td>
+            <td>Mứt dâu</td>
+            <td>Lọ</td>
+            <td>75.000</td>
+            <td>2</td>
+            <td>7/12/2024 9:00</td>
+            <td>
+              <!-- Nút sửa -->
+              <a href="suanguyenlieu.html">
+                <button class="edit-btn">Sửa</button>
+              </a>
+              <!-- Nút xóa -->
+              <a href="xoanguyenlieu.html">
+                <button class="delete-btn">Xóa</button>
+              </a>
+            </td>            
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

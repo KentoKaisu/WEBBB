@@ -1,0 +1,221 @@
+
+    .body {
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      background-color: #198754;
+      height: 100vh;
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      color: white;
+    }
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 30px;
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .sidebar a i {
+      margin-right: 10px;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #4b69b4;
+    }
+    .content {
+      margin-left: 270px;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .table th {
+      background-color: #198754;
+      color: white;
+    }
+    .search {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 20px;
+    }
+    .search input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px 0 0 5px;
+      width: 300px;
+    }
+    .search button {
+      padding: 10px;
+      background-color: #6c7d31;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    .search button:hover {
+      background-color: #4b5c1d;
+    }
+    button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    /* Nút sửa */
+button.edit-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button.edit-btn:hover {
+  background-color: #198754;
+}
+
+/* Nút xóa */
+button.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+
+
+    .filters-container{
+      flex: 1;
+  padding: 20px;
+    }
+
+    .filters {
+  background-color: #ffffff;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.filters-row .btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 26px;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.filters input[type="date"],
+.filters select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  color: #111827;
+  background-color: #f9fafb;
+  transition: all 0.3s ease;
+}
+
+.filters input[type="date"]:hover,
+.filters select:hover {
+  border-color: #9ca3af;
+}
+
+.filters input[type="date"]:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.date-range {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.date-range label {
+  white-space: nowrap;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.btn_ass {
+  padding: 8px 16px;
+  background-color: #14b8a6;
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn_ass:hover {
+  background-color: rgb(22, 171, 22);
+}
+
+.btn_ass:active {
+  background-color: #0f766e;
+  transform: translateY(0);
+}
+
+.filter-separator {
+  height: 2px;
+  background-color: #e5e7eb;
+  margin: 16px 0;
+  width: 100%;
+}

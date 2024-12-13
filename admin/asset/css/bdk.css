@@ -1,0 +1,65 @@
+
+    .body {
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      background-color: #198754;
+      height: 100vh;
+      padding: 20px;
+      color: white;
+      position: fixed;
+      width: 250px;
+    }
+    .sidebar h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .sidebar a:hover {
+      background-color: #a6b44b;
+    }
+    .sidebar a i {
+      margin-right: 10px;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #4b69b4;
+    }
+    .content {
+      margin-left: 270px;
+      padding: 20px;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+    .table th {
+      background-color: #198754;
+      color: white;
+    }
+    .btn {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }

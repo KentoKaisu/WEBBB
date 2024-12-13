@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tea House</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Asset/Css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <!-- Thêm script data địa chỉ Việt Nam -->
+    <script src="https://cdn.jsdelivr.net/gh/thien0291/vietnam_dataset@1.0.0/data.min.js"></script>
+  </head>
+  <body>
+    <main class="mt-5 mb-5">
+        <section class="page mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="mb-3">Thông tin nhận hàng</h4>
+                        <input class="form-control mb-3" placeholder="Email"/>
+                        <input class="form-control mb-3" placeholder="Họ và tên"/>
+                        <input class="form-control mb-3" placeholder="Số điện thoại"/>
+                        <input class="form-control mb-3" placeholder="Địa chỉ"/>
+                        <select class="form-select  mb-3">
+                            <option selected>Tỉnh thành</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <select class="form-select  mb-3">
+                            <option selected>Quận huyện</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <select class="form-select  mb-3">
+                            <option selected>Phường xã</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <textarea class="form-control" placeholder="Ghi chú" id="floatingTextarea"></textarea>
+                    </div>
+
+                    <!-- thanh toán -->
+                    <div class="col-md-4">
+                        <h4 class="mb-3">Vận chuyển</h4>
+                        <div class="alert--info">Vui lòng nhập thông tin giao hàng</div>
+                        <h4 class="mb-3 mt-5">Thanh toán</h4>
+                    
+                        <!-- Thanh toán COD -->
+                        <div class="border p-3 d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" name="payment" value="COD" id="cod-payment">
+                            <div>Thanh toán khi giao hàng (COD)</div>
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </div>
+                    
+                        <!-- Thanh toán thẻ -->
+                        <div class="border p-3 d-flex align-items-center justify-content-between mb-3">
+                            <input type="radio" name="payment" value="card" id="card-payment">
+                            <div>Thanh toán bằng thẻ</div>
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                        </div>
+                    
+                        <!-- Form thông tin thẻ -->
+                        <div id="cardPaymentBox" class="border p-3">
+                            <div class="mb-3">
+                                <input type="text" class="form-control card-input" placeholder="Số thẻ" maxlength="19">
+                            </div>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <input type="text" class="form-control expiry-input" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <input type="text" class="form-control cvv-input" placeholder="CVV" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cột đơn hàng -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="mb-0">Đơn hàng (5 sản phẩm)</h4>
+                            <hr>
+                            <!-- sp1 -->
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img width="70" src="./Asset/Img/traphucbontu.webp">
+                                    <div class="ms-2">Trà Phúc Bồn Tử</div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-primary text-white px-3 py-2">1</span>
+                                </div>
+                                <div class="ms-3">45.000đ</div>
+                            </div>
+                            <!-- sp2 -->
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img width="70" src="./Asset/Img/tracamdao.webp">
+                                    <div class="ms-2">Trà Cam Đào</div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-primary text-white px-3 py-2">2</span>
+                                </div>
+                                <div class="ms-3">80.000đ</div>
+                            </div>
+                            <!-- sp3 -->
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img width="70" src="./Asset/Img/caphe.webp">
+                                    <div class="ms-2">Cà Phê</div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-primary text-white px-3 py-2">2</span>
+                                </div>
+                                <div class="ms-3">60.000đ</div>
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center p-3">
+                                <input class="form-control" placeholder="Nhập mã giảm giá">
+                                <button class="btn btn-primary ms-3" style="width: 150px;">Áp dụng</button>
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>Tạm tính</div>
+                                <div>185.000đ</div>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>Thuế 5%</div>
+                                <div>9.250đ</div>
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center justify-content-between p-3">
+                                <h5>Tổng cộng</h5>
+                                <div style="font-size: 1.5em;
+                                font-weight: 500;
+                                letter-spacing: -.04em;
+                                line-height: 1em;
+                                color: #2a9dcc;">194.250đ</div>
+                            </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-primary">
+                                    <a href="giohangS.html" class="btn-back" style ="color: white;">Quay lại</a>
+                                </button>
+
+                                <button type="button" class="btn btn-primary">
+                                    <a href="success.html" class="btn-back" style ="color: white;">Đặt hàng</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <script src="payment.js"></script>
+  </body>
+</html>

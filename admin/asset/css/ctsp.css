@@ -1,0 +1,116 @@
+
+.body {
+    font-family: Arial, sans-serif;
+  }
+  .sidebar {
+    background-color: #57e183;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    color: white;
+  }
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .sidebar a i {
+    margin-right: 10px;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    background-color: #4b69b4;
+  }
+  .content {
+    margin-left: 270px;
+    padding: 20px;
+  }
+ .search {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  .search input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    width: 300px;
+  }
+  .search button {
+    padding: 10px;
+    background-color: #6c7d31;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  .search button:hover {
+    background-color: #4b5c1d;
+  }
+  button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:last-child {
+    background-color: #f44336;
+    color: white;
+  }
+  button:last-child:hover {
+    background-color: #d32f2f;
+  }
+  .container :hover{
+    background-color: #1d2946;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .product-info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 1000px;
+    margin: 0 auto; 
+    font-size: 25px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-top: 20px;
+  }

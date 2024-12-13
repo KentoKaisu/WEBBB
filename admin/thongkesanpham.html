@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thống Kê Sản Phẩm</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="asset/css/bdk.css" rel="stylesheet">
+
+  <style>
+    body {
+      display: flex;
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #198754;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      color: #ffffff;
+    }
+    .sidebar a {
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .sidebar a:hover {
+      background-color: #4b69b4;
+    }
+    .sidebar .active {
+      background-color: #007bff;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+    .bar-chart {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      height: 300px;
+      margin: 20px 0;
+    }
+    .bar {
+      width: 50px;
+      background-color: #4bc0c0;
+      transition: background-color 0.3s;
+      position: relative;
+      cursor: pointer;
+    }
+    .bar:hover {
+      background-color: #36a2eb;
+    }
+    .bar-value {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 5px;
+      color: #000;
+      font-weight: bold;
+      display: none;
+    }
+    .bar:hover .bar-value {
+      display: block;
+    }
+    .legend {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .filters-container{
+      flex: 1;
+  padding: 20px;
+    }
+
+    .filters {
+  background-color: #ffffff;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.filters-row .btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 26px;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 180px;
+}
+
+.filter-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.filters input[type="date"],
+.filters select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  color: #111827;
+  background-color: #f9fafb;
+  transition: all 0.3s ease;
+}
+
+.filters input[type="date"]:hover,
+.filters select:hover {
+  border-color: #9ca3af;
+}
+
+.filters input[type="date"]:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.date-range {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.date-range label {
+  white-space: nowrap;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.btn {
+  padding: 8px 16px;
+  background-color: #14b8a6;
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: rgb(22, 171, 22);
+}
+
+.btn:active {
+  background-color: #0f766e;
+  transform: translateY(0);
+}
+
+.filter-separator {
+  height: 2px;
+  background-color: #e5e7eb;
+  margin: 16px 0;
+  width: 100%;
+}
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Tea House</h2>
+    <a href="bangdieukhien.html"><i class="fas fa-home"></i> Bảng điều khiển</a>
+    <a href="quanlidonhang.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a>
+    <a href="quanlinguyenlieu.html"><i class="fas fa-book"></i> Quản lý nguyên liệu</a>
+    <a href="quanlinguoidung.html"><i class="fa-solid fa-user"></i>Quản lí người dùng</a>
+    <a href="quanlisanpham.html"><i class="fa-solid fa-list"></i>Quản lí sản phẩm</a>
+
+    <a href="thongkesanpham.html" class="active"><i class="fa-solid fa-shop"></i> Thống kê sản phẩm</a>
+    <a href="quanlikhachhang.html"><i class="fa-solid fa-users"></i> Thống kê khách hàng</a>
+
+  </div>
+  
+  <div class="content">
+    <h1>Thống Kê Sản Phẩm</h1>
+    <div class="filters-container">
+    <div class="filters">
+      <div class="filters-row">
+        <div class="filter-group">
+          <label class="filter-label"></label>
+          <div class="date-range">
+            <div>
+              <label>From:</label>
+              <input type="date" id="start-date" name="start-date" />
+            </div>
+            <div class="date-to">
+              <label>To:</label>
+              <input type="date" id="end-date" name="end-date" />
+            </div>
+          </div>
+      </div>
+    
+      <button class="btn">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Sản Phẩm Bán Chạy Nhất - Tuần Này (Tổng doanh thu: 7.400.000đ)</h2>
+    <div class="bar-chart">
+      <div class="bar" data-product="Trà xoài tươi" style="height: 85%;" data-orders='[{"id":"001","customer":"Võ Nhựt Thanh","products":"Trà sữa yến mạch, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"300.000đ"},{"id":"002","customer":"Lê Thanh Đạt","products":"Trà táo, Trà xoài tươi * 6","status":"Đang xử lý","total":"200.000đ"},{"id":"003","customer":"Tấn Híu Híu Híu","products":"Trà sữa yến mạch, Trà cam đào, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"004","customer":"Sưn Hùng","products":"Trà xoài tươi * 2","status":"Đang xử lý","total":"100.000đ"}]'><span class="bar-value">1.050.000đ</span></div>
+      <div class="bar" data-product="Trà cam đào" style="height: 70%;" data-orders='[{"id":"001","customer":"Võ Nhựt Thanh","products":"Trà sữa yến mạch, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"300.000đ"}]'><span class="bar-value">950.000đ</span></div>
+      <div class="bar" data-product="Trà chanh dây" style="height: 80%;" data-orders='[{"id":"004","customer":"Taylor Swift","products":"Trà chanh dây * 5, Trà khế * 3, Trà ổi * 3","status":"Đã giao","total":"475.000đ"},{"id":"005","customer":"Beyonce","products":"Trà chanh dây * 10","status":"Đã giao","total":"500.000đ"}]'><span class="bar-value">975.000đ</span></div>
+      <div class="bar" data-product="Trà tắc xả" style="height: 65%;" data-orders='[{"id":"007","customer":"Taylor Swift","products":"Trà tắc xả * 5, Trà táo * 4, Trà ổi * 3","status":"Đã giao","total":"435.000đ"},{"id":"005","customer":"Beyonce","products":"Trà tắc xả * 10","status":"Đã giao","total":"500.000đ"}]'><span class="bar-value">935.000đ</span></div>
+      <div class="bar" data-product="Trà chanh" style="height: 50%;" data-orders='[{"id":"010","customer":"Taylor Swift","products":"Trà chanh * 10, Trà khế * 3","status":"Đã giao","total":"335.000đ"},{"id":"011","customer":"Beyonce","products":"Trà chanh * 7","status":"Đã giao","total":"400.000đ"}]'><span class="bar-value">735.000đ</span></div>
+    </div>
+    <div class="legend">
+      <div style="margin-left: -7px">Trà xoài tươi</div>
+      <div style="margin-left: -20px">Trà cam đào</div>
+      <div style="margin-left: -30px">Trà chanh dây</div>
+      <div style="margin-left: -20px">Trà tắc xả</div>
+      <div>Trà chanh</div>
+    </div>
+
+    <h2 style="margin-top: 20px;">Sản Phẩm Bán Chạy Nhất - Tuần Trước (Tổng doanh thu: 6.866.000đ)</h2>
+    <div class="bar-chart">
+      <div class="bar" data-product="Trà dâu" style="height: 75%;" data-orders='[{"id":"050","customer":"Võ Nhựt Thanh","products":"Trà dâu * 6, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"300.000đ"},{"id":"002","customer":"Lê Thanh Đạt","products":"Trà dâu * 5, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"003","customer":"Tấn Híu Híu Híu","products":"Trà dâu, Trà cam đào, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"004","customer":"Sưn Hùng","products":"Trà dâu * 2","status":"Đã giao","total":"100.000đ"}]'><span class="bar-value">900.000đ</span></div>
+      <div class="bar" data-product="Trà kiwi" style="height: 65%;" data-orders='[{"id":"050","customer":"Võ Nhựt Thanh","products":"Trà kiwi * 6, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"250.000đ"},{"id":"002","customer":"Lê Thanh Đạt","products":"Trà kiwi * 3, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"003","customer":"Tấn Híu Híu Híu","products":"Trà kiwi * 5, Trà cam đào, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"004","customer":"Sưn Hùng","products":"Trà kiwi * 2","status":"Đã giao","total":"100.000đ"}]'><span class="bar-value">850.000đ</span></div>
+      <div class="bar" data-product="Trà phúc bồn tử" style="height: 70%;" data-orders='[{"id":"050","customer":"Võ Nhựt Thanh","products":"Trà phúc bồn tử * 6, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"375.000đ"},{"id":"002","customer":"Lê Thanh Đạt","products":"Trà phúc bồn tử * 5, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"003","customer":"Tấn Híu Híu Híu","products":"Trà phúc bồn tử, Trà cam đào, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"004","customer":"Sưn Hùng","products":"Trà phúc bồn tử * 2","status":"Đã giao","total":"100.000đ"}]'><span class="bar-value">875.000đ</span></div>
+      <div class="bar" data-product="Trà vải" style="height: 60%;" data-orders='[{"id":"050","customer":"Võ Nhựt Thanh","products":"Trà vải * 6, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"375.000đ"},{"id":"002","customer":"Lê Thanh Đạt","products":"Trà vải * 5, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"003","customer":"Tấn Híu Híu Híu","products":"Trà vải, Trà cam đào, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"004","customer":"Sưn Hùng","products":"Trà vải * 2","status":"Đã giao","total":"100.000đ"}]'><span class="bar-value">800.000đ</span></div>
+      <div class="bar" data-product="Trà chanh leo" style="height: 55%;" data-orders='[{"id":"050","customer":"Võ Nhựt Thanh","products":"Trà chanh leo * 6, Trà cam đào * 3, Trà xoài tươi * 5","status":"Đã giao","total":"375.000đ"},{"id":"002","customer":"Lê Thanh Đạt","products":"Trà chanh leo * 5, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"003","customer":"Tấn Híu Híu Híu","products":"Trà chanh leo, Trà cam đào, Trà xoài tươi","status":"Đã giao","total":"200.000đ"},{"id":"004","customer":"Sưn Hùng","products":"Trà chanh leo * 2","status":"Đã giao","total":"100.000đ"}]'><span class="bar-value">750.000đ</span></div>
+    </div>
+    <div class="legend">
+      <div style="margin-left: 15px">Trà dâu</div>
+      <div style="margin-left: 35px">Trà kiwi</div>
+      <div style="margin-left: 2px">Trà phúc bồn tử</div>
+      <div style="margin-left: 10px">Trà vải</div>
+      <div style="margin-left: 15px">Trà chanh leo</div>
+    </div>
+
+    <h2>Sản Phẩm Bán Ế Nhất - Tuần Này</h2>
+    <div class="card" data-product="Trà sữa yến mạch" data-orders='[{"id":"091","customer":"Nguyễn Văn A","products":"Trà sữa yến mạch, Trà cam đào * 3","status":"Đã giao","total":"120.000đ"},{"id":"112","customer":"Messi","products":"Trà sữa yến mạch * 4","status":"Đã giao","total":"300.000đ"}]'>
+      <div class="card-body">
+        <h5 class="card-title">Trà sữa yến mạch</h5>
+        <p class="card-text">Chỉ bán được 5 sản phẩm trong tháng này.</p>
+      </div>
+    </div>
+
+    <h2 >Sản Phẩm Bán Ế Nhất - Tuần Trước</h2>
+    <div class="card" data-product="Trà táo" data-orders='[{"id":"112","customer":"Võ Nhựt Thanh","products":"Trà táo, Trà phúc bồn tử, Trà chanh thái dương * 2","status":"Đã giao","total":"160.000đ"}]'>
+      <div class="card-body">
+        <h5 class="card-title">Trà táo</h5>
+        <p class="card-text">Chỉ bán được 3 sản phẩm trong tuần trước.</p>
+      </div>
+    </div>
+
+      <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderModalLabel">Chi Tiết Đơn Hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Mã Đơn Hàng</th>
+                <th>Tên Khách Hàng</th>
+                <th>Danh Sách Sản Phẩm</th>
+                <th>Trạng Thái</th>
+                <th>Thành Tiền</th>
+              </tr>
+            </thead>
+            <tbody id="orderDetails">
+              <!-- Order details will be populated here -->
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const orderModal = document.getElementById('orderModal');
+    const bars = document.querySelectorAll('.bar');
+    const cards = document.querySelectorAll('.card');
+
+    function populateModal(orders) {
+      const modalBody = orderModal.querySelector('#orderDetails');
+      modalBody.innerHTML = '';
+      orders.forEach(order => {
+        const row = `
+          <tr>
+            <td>${order.id}</td>
+            <td>${order.customer}</td>
+            <td>${order.products}</td>
+            <td>${order.status}</td>
+            <td>${order.total}</td>
+          </tr>
+        `;
+        modalBody.innerHTML += row;
+      });
+    }
+    bars.forEach(bar => {
+      bar.addEventListener('click', () => {
+        const orders = JSON.parse(bar.getAttribute('data-orders'));
+        populateModal(orders);
+        const bsModal = new bootstrap.Modal(orderModal);
+        bsModal.show();
+      });
+    });
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const orders = JSON.parse(card.getAttribute('data-orders'));
+        populateModal(orders);
+        const bsModal = new bootstrap.Modal(orderModal);
+        bsModal.show();
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cập nhật nguyên liệu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px; /* Mở rộng độ rộng để chứa hình ảnh bên trái */
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex; /* Sử dụng flex để sắp xếp hình ảnh và form */
+            align-items: center;
+            justify-content: space-between;
+        }
+        h1 {
+            text-align: center;
+            color: #198754;
+            width: 100%; /* Đảm bảo tiêu đề chiếm toàn bộ chiều rộng */
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #198754;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #145a3e;
+        }
+
+        /* Phần hình ảnh */
+        .image-container {
+            width: 40%; /* Đặt chiều rộng cho phần hình ảnh */
+            text-align: center;
+        }
+        .image-container img {
+            width: 80%; /* Hình ảnh chiếm 80% chiều rộng của phần hình ảnh */
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .image-container input[type="file"] {
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Phần hình ảnh -->
+        <div class="image-container">
+            <img id="image-preview" src="https://via.placeholder.com/150" alt="Hình ảnh nguyên liệu">
+            <input type="file" id="image-upload" accept="image/*" disabled>
+        </div>
+
+        <!-- Form Cập nhật Nguyên liệu -->
+        <div class="form-container" style="width: 55%;"> <!-- Đặt width nhỏ hơn 100% để còn chỗ cho hình ảnh -->
+            <h1>Cập nhật nguyên liệu</h1>
+            <form id="update-form">
+                <label for="ma-nguyen-lieu">Mã nguyên liệu:</label>
+                <input type="text" id="ma-nguyen-lieu" name="ma-nguyen-lieu" value="TR01" readonly>
+
+                <label for="ten-nguyen-lieu">Tên nguyên liệu:</label>
+                <input type="text" id="ten-nguyen-lieu" name="ten-nguyen-lieu" value="Gói trà pha sẵn">
+
+                <label for="don-vi">Đơn vị:</label>
+                <select id="don-vi" name="don-vi">
+                    <option value="Gói" selected>Gói</option>
+                    <option value="Lon">Lon</option>
+                    <option value="Chai">Chai</option>
+                    <option value="Kilogram">Kilogram</option>
+                    <option value="Lọ">Lọ</option>
+                </select>
+
+                <label for="phan-loai">Phân loại sản phẩm:</label>
+                <select id="phan-loai" name="phan-loai">
+                    <option value="Tra" selected>Trà</option>
+                    <option value="Ca-phe">Cà phê</option>
+                    <option value="Banh-ngot">Bánh ngọt</option>
+                </select>
+
+                <label for="don-gia">Đơn giá (VND):</label>
+                <input type="number" id="don-gia" name="don-gia" value="8000" min="0">
+
+                <label for="ton-kho">Tồn kho:</label>
+                <input type="number" id="ton-kho" name="ton-kho" value="35" min="0">
+
+                <button class="confirmbtn" type="button">Lưu thay đổi</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const confirmButton = document.querySelector('.confirmbtn');
+
+            confirmButton.addEventListener('click', function () {
+                alert('Thông tin nguyên liệu đã được lưu thành công!');
+                // Chuyển sang trang khác
+                window.location.href = "quanlinguyenlieu.html";
+            });
+        });
+    </script>
+</body>
+</html>
