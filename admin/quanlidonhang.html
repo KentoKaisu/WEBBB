@@ -121,8 +121,6 @@
         <div class="col-md-4">
           <input type="text" class="form-control" placeholder="Tìm kiếm theo mã đơn hàng">
         </div>
-        
-        
         <div class="col-md-2">
           <button class="btn btn-outline-primary">Tìm kiếm</button>
         </div>
@@ -170,7 +168,7 @@
           <td>2024-12-14</td>
           <td>2 Đ. An Dương, Phường 1, Quận 2, HCM</td>
           <td>
-            <select class="form-select status-dropdown">
+            <select class="form-select status-dropdown" onchange="updateStatusColor(this)">
               <option value="processing" class="status-processing">Đang xử lí</option>
               <option value="delivering" class="status-delivering">Đang giao</option>
               <option value="delivered" class="status-delivered">Đã giao</option>
@@ -189,7 +187,7 @@
           <td>2024-12-14</td>
           <td>273 Đ. An, Phường 5, Quận 10, HCM</td>
           <td>
-            <select class="form-select status-dropdown">
+            <select class="form-select status-dropdown" onchange="updateStatusColor(this)">
               <option value="processing" class="status-processing">Đang xử lí</option>
               <option value="delivering" class="status-delivering">Đang giao</option>
               <option value="delivered" class="status-delivered">Đã giao</option>
@@ -208,7 +206,7 @@
           <td>2024-12-14</td>
           <td>273 Đ. An Dương, Phường 2, Quận 1, HCM</td>
           <td>
-            <select class="form-select status-dropdown">
+            <select class="form-select status-dropdown" onchange="updateStatusColor(this)">
               <option value="processing" class="status-processing">Đang xử lí</option>
               <option value="delivering" class="status-delivering">Đang giao</option>
               <option value="delivered" class="status-delivered">Đã giao</option>
@@ -227,7 +225,7 @@
           <td>2024-12-14</td>
           <td>273 Đ. An Dương, Phường 5, Quận 6, HCM</td>
           <td>
-            <select class="form-select status-dropdown">
+            <select class="form-select status-dropdown" onchange="updateStatusColor(this)">
               <option value="processing" class="status-processing">Đang xử lí</option>
               <option value="delivering" class="status-delivering">Đang giao</option>
               <option value="delivered" class="status-delivered">Đã giao</option>
@@ -246,7 +244,7 @@
           <td>2024-12-14</td>
           <td>273 Đ. An, Phường 6, Quận 4, HCM</td>
           <td>
-            <select class="form-select status-dropdown">
+            <select class="form-select status-dropdown" onchange="updateStatusColor(this)">
               <option value="processing" class="status-processing">Đang xử lí</option>
               <option value="delivering" class="status-delivering">Đang giao</option>
               <option value="delivered" class="status-delivered">Đã giao</option>
@@ -261,5 +259,31 @@
       </tbody>
     </table>
   </div>
+
+  <script>
+    function updateStatusColor(selectElement) {
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const parentRow = selectElement.closest('tr');
+      
+      // Remove all status classes from the parent row
+      parentRow.classList.remove('status-processing', 'status-delivering', 'status-delivered', 'status-failed');
+
+      // Add the class corresponding to the selected status
+      switch (selectedOption.value) {
+        case 'processing':
+          parentRow.classList.add('status-processing');
+          break;
+        case 'delivering':
+          parentRow.classList.add('status-delivering');
+          break;
+        case 'delivered':
+          parentRow.classList.add('status-delivered');
+          break;
+        case 'failed':
+          parentRow.classList.add('status-failed');
+          break;
+      }
+    }
+  </script>
 </body>
 </html>
