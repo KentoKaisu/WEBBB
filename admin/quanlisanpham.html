@@ -74,7 +74,7 @@
 
   <div class="content">
     <h1>Quản Lý Sản Phẩm</h1>
-    <button class="btn btn-primary mb-3" onclick="openAddModal()">Thêm sản phẩm</button>
+    <button class="btn btn-success mb-3" onclick="openAddModal()">Thêm sản phẩm</button>
     
     <table class="table table-striped">
       <thead>
@@ -103,7 +103,7 @@
           <td class="text-center">2</td>
           <td class="text-center">Trà Cam Đào</td>
           <td class="text-center"><img src="../admin/Img/tracamdao.webp" alt="Trà Cam Đào"></td>
-          <td class="text-center">Trà Cam Đào</td>
+          <td class="text-center">Trà Trái Cây</td>
           <td class="text-center">35.000đ</td>
           <td class="text-center">
             <button class="btn btn-warning" onclick="openEditModal(2, 'Trà Cam Đào', 'tracamdao.jpg', 'Trà trái cây', 35000)">Sửa</button>
@@ -219,15 +219,15 @@
           <form id="addProductForm">
             <div class="mb-3">
               <label for="newProductName" class="form-label">Tên sản phẩm</label>
-              <input type="text" class="form-control" id="newProductName" required>
+              <input type="text" class="form-control" id="newProductName" >
             </div>
             <div class="mb-3">
               <label for="newProductImage" class="form-label">Hình sản phẩm</label>
-              <input type="file" class="form-control" id="newProductImage" required>
+              <input type="file" class="form-control" id="newProductImage" >
             </div>
             <div class="mb-3">
               <label for="newProductType" class="form-label">Loại</label>
-              <select class="form-select" id="newProductType" required>
+              <select class="form-select" id="newProductType" >
                 <option value="Trà trái cây">Trà trái cây</option>
                 <option value="Cà phê">Cà phê</option>
                 <option value="Bánh">Bánh</option>
@@ -236,7 +236,7 @@
             </div>
             <div class="mb-3">
               <label for="newProductPrice" class="form-label">Giá</label>
-              <input type="number" class="form-control" id="newProductPrice" required>
+              <input type="number" class="form-control" id="newProductPrice" >
             </div>
             <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
           </form>
